@@ -1,0 +1,27 @@
+package com.hotel.service.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hotel.service.entity.Hotel;
+import com.hotel.service.mapping.HotelDTO;
+import com.hotel.service.service.HotelService;
+
+@RestController
+@RequestMapping("/hotel")
+public class HotelController {
+
+	@Autowired
+	HotelService hotelService;
+	
+	@PostMapping("/create")
+	public ResponseEntity<Hotel> createHotel(@RequestBody HotelDTO hotelDTO){
+		Hotel hotel = hotelService.createHotel(hotelDTO);
+		return new ResponseEntity<Hotel>(hotel, HttpStatus.CREATED);
+	}
+}

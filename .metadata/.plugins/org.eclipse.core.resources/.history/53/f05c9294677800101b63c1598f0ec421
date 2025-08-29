@@ -1,0 +1,28 @@
+package com.user.service.service.Impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.user.service.dto.UserDTO;
+import com.user.service.entiy.User;
+import com.user.service.mapping.Usermapping;
+import com.user.service.repository.UserRepository;
+import com.user.service.servie.UserService;
+
+public class UserServieImpl implements UserService {
+
+	@Autowired
+	UserRepository userRepository;
+	
+	@Override
+	public User create(UserDTO userDTO) {
+		User result = new User();
+		try {
+			User user = Usermapping.dtoToUser(userDTO);
+		 result = userRepository.save(user);
+		}catch(Exception ex) {
+			System.out.println(ex.toString());
+		}
+		return result;
+	}
+
+}

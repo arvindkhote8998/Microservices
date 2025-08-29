@@ -1,0 +1,36 @@
+package com.user.service.service.Impl;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.user.service.dto.UserDTO;
+import com.user.service.entiy.User;
+import com.user.service.mapping.Usermapping;
+import com.user.service.repository.UserRepository;
+import com.user.service.servie.UserService;
+
+@Service
+public class UserServieImpl implements UserService {
+
+	@Autowired
+	UserRepository userRepository;
+	
+	private final Logger logger = LoggerFactory.getLogger(UserService.class);
+	
+	@Override
+	public User create(UserDTO userDTO) {
+		logger.info("------- calling create method of UserServieImpl class ---------- ");
+		User result = new User();
+		try {
+			User user = Usermapping.dtoToUser(userDTO);
+			result = userRepository.save(user);
+		} catch (Exception ex) {
+			logger.error("Error creating user", ex);
+		}
+		logger.info("------- ending  create method of UserServieImpl class ---------- ");
+		return result;
+	}
+
+}

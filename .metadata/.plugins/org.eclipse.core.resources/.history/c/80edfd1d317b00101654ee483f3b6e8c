@@ -1,0 +1,8 @@
+package com.hotel.service.exception;
+
+public class ResourceNotFoundException extends RuntimeException{
+
+	public void ResourceNotFoundException() {
+		super("User Not found");
+	}
+}

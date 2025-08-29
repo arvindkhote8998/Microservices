@@ -1,0 +1,61 @@
+package com.rating.service.service.impl;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.rating.service.entity.Ratings;
+import com.rating.service.exception.ResourceNotFoundException;
+import com.rating.service.mapping.RatingDTO;
+import com.rating.service.mapping.RatingMapping;
+import com.rating.service.repository.RatingRepository;
+import com.rating.service.service.RatingService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class RatingServiceImpl implements RatingService {
+
+	private final Logger logger = LoggerFactory.getLogger(RatingService.class);
+
+	@Autowired
+	RatingRepository ratingRepository;
+
+	@Override
+	public Ratings create(RatingDTO ratingDTO) {
+		logger.info("-------- create method call of RatingService--------");
+		Ratings ratings = RatingMapping.toEntity(ratingDTO);
+		return ratingRepository.save(ratings);
+	}
+
+	@Override
+	public List<Ratings> getAllratings() {
+		logger.info("-------- getAllratings method call of RatingService--------");
+		return ratingRepository.findAll();
+
+	}
+
+	@Override
+	public Ratings findRatings(Integer ratingsId) {
+		logger.info("-------- findRatings method call of RatingService--------");
+		return ratingRepository.findById(ratingsId)
+				.orElseThrow(() -> new ResourceNotFoundException("Resource Not Found By givenratingId :"+ ratingsId));
+	}
+
+	@Override
+	public Ratings findByUserId(Integer userId) {
+		logger.info("-------- findByUserId method call of RatingService--------");
+		 return ratingRepository.findByUserId(userId).orElseThrow(()-> new ResourceNotFoundException("Resurce Not Found By GivenUserId :"+ userId));
+	}
+
+	@Override
+	public List<Ratings> findByHotelId(Integer hotelId) {
+		logger.info("-------- findByHotelId method call of RatingService--------");
+		return ratingRepository.findByHotelId(hotelId).orElseThrow(()-> new ResourceNotFoundException("Resource Not Found by Given HotelId :"+hotelId));
+	}
+
+}

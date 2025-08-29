@@ -1,0 +1,14 @@
+package com.rating.service.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.rating.service.entity.Ratings;
+
+public interface RatingRepository extends JpaRepository<Ratings, Integer> {
+
+	public List<Ratings> findByUserId(Integer userId);
+
+	public List<Ratings> findByHotelId(Integer hotelId);
+}

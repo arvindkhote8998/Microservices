@@ -1,0 +1,5 @@
+package com.user.service.service.Impl;
+
+public class UserServieImpl implements UserService {
+
+}

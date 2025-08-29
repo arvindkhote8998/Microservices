@@ -1,0 +1,18 @@
+package com.hotel.service.exception;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionhandler {
+
+	public ResourceNotFoundException getMessage(ResourceNotFoundException ex) {
+		Map map = new HashMap<>();
+		map.put("message", ex.getMessage());
+		map.put("status", HttpStatus.NOT_FOUND);
+		return map;
+	}
+}

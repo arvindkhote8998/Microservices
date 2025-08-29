@@ -1,0 +1,8 @@
+package com.user.service.dto;
+
+public class Ratings {
+
+	private Integer ratingId;
+	private Integer userId;
+	private Integer hotelId;
+}

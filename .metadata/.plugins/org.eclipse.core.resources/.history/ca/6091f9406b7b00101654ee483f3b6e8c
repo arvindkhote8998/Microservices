@@ -1,0 +1,49 @@
+package com.rating.service.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.rating.service.entity.Ratings;
+import com.rating.service.mapping.RatingDTO;
+import com.rating.service.service.RatingService;
+
+public class RatingController {
+
+	@Autowired
+	RatingService ratingService;
+	
+	@PostMapping("/create")
+	public ResponseEntity<Ratings>  create(RatingDTO ratingDTO){
+		 Ratings ratings = ratingService.create(ratingDTO);
+		 return new ResponseEntity<Ratings>(ratings, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getAllratings")
+	public ResponseEntity<List<Ratings>> getAllratings(){
+		List<Ratings> list = ratingService.getAllratings();
+		 return new ResponseEntity<List<Ratings>>(list, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getAllratings")
+	public ResponseEntity<Ratings> findRatings(Integer ratingsId){
+		Ratings findRatings = ratingService.findRatings(ratingsId);
+		return new ResponseEntity<Ratings>(findRatings, HttpStatus.OK);
+	}
+	
+	@GetMapping("/findByUserId")
+	public ResponseEntity<List<Ratings>> findByUserId(Integer userId){
+		List<Ratings> findByUserId = ratingService.findByUserId(userId);
+		return new ResponseEntity<List<Ratings>>(findByUserId, HttpStatus.OK);
+	}
+	
+	@GetMapping("/findByHotelId")
+	public ResponseEntity<List<Ratings>> findByHotelId(Integer hotelId){
+		List<Ratings> findByHotelId = ratingService.findByHotelId(hotelId);
+		return new ResponseEntity<List<Ratings>>(findByHotelId, HttpStatus.OK);
+	}
+}

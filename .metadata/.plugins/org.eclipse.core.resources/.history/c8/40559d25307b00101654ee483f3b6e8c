@@ -1,0 +1,24 @@
+package com.hotel.service.mapping;
+
+import com.hotel.service.entity.Hotel;
+
+public class HotelMapping {
+
+	public static Hotel toEntity(HotelDTO hotelDTO) {
+		Hotel hotel = new Hotel();
+		hotel.setHotelName(hotelDTO.getHotelName());
+		hotel.setHotelId(hotelDTO.getHotelId());
+		hotel.setLocation(hotelDTO.getLocation());
+		hotel.setFeedBack(hotelDTO.getFeedBack());
+		return hotel;
+	}
+	
+	public HotelDTO toDTO(Hotel hotel) {
+		HotelDTO hotelDTO = new HotelDTO();
+		hotelDTO.setHotelName(hotel.getHotelName());
+		hotelDTO.setHotelId(hotel.getHotelId());
+		hotelDTO.setFeedBack(hotel.getFeedBack());
+		hotelDTO.setLocation(hotel.getLocation());
+		return hotelDTO;
+	}
+}

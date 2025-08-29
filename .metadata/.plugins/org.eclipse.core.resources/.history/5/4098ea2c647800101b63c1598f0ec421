@@ -1,0 +1,11 @@
+package com.user.service.dto;
+
+import java.util.List;
+
+public class UserDTO {
+
+	private String userName;
+	private String email;
+	
+	private List<Ratings> rating;
+}

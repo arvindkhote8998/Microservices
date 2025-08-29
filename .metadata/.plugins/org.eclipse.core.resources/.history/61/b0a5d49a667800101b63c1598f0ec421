@@ -1,0 +1,24 @@
+package com.user.service.mapping;
+
+import com.user.service.dto.UserDTO;
+import com.user.service.entiy.User;
+
+public class Usermapping {
+
+	public static User dtoToUser(UserDTO userDTO) {
+		User user = new User();
+		user.setUserName(userDTO.getUserName());
+		user.setEmail(userDTO.getEmail());
+		user.setRating(userDTO.getRating());
+		return user;
+	}
+	
+	public static UserDTO usetToDto(User user) {
+		UserDTO userDTO = new UserDTO();
+		userDTO.setUserName(user.getUserName());
+		userDTO.setEmail(user.getEmail());
+		userDTO.setRating(user.getRating());
+		userDTO.setUserId(user.getUserId());
+		return userDTO;
+	}
+}

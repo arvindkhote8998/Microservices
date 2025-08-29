@@ -1,0 +1,21 @@
+package com.user.service.external;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.rating.service.mapping.RatingDTO;
+import com.user.service.dto.Ratings;
+
+@FeignClient("RatingService")
+public interface RatingService {
+
+	@GetMapping("/ratings/findByUserId/{userId}")
+	List<Ratings>  findByUserId(@PathVariable("userId") Integer userId);
+	
+	 Ratings create(@RequestBody RatingDTO ratingDTO);
+}

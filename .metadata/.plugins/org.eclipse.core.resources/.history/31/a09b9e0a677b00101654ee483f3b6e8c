@@ -1,0 +1,9 @@
+package com.rating.service.service;
+
+import com.rating.service.entity.Ratings;
+import com.rating.service.mapping.RatingDTO;
+
+public interface RatingService {
+
+	public Ratings create(RatingDTO ratingDTO);
+}

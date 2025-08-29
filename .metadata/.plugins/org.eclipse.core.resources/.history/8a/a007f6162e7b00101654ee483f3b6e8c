@@ -1,0 +1,5 @@
+package com.hotel.service.mapping;
+
+public class HotelDTO {
+
+}

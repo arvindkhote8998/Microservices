@@ -1,0 +1,14 @@
+package com.rating.service.mapping;
+
+import com.rating.service.entity.Ratings;
+
+public class RatingMapping {
+
+	public static Ratings toEntity(RatingDTO ratingDTO) {
+		Ratings ratings = new Ratings();
+		ratings.setRatingId(ratingDTO.getRatingId());
+		ratings.setFeedBack(ratingDTO.getFeedBack());
+		ratings.setHotelId(ratingDTO.getHotelId());
+		ratings.setUserId(ratingDTO.getUserId());
+	}
+}

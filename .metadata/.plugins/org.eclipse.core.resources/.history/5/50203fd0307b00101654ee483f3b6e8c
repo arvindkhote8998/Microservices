@@ -1,0 +1,46 @@
+package com.hotel.service.service.impl;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import com.hotel.service.entity.Hotel;
+import com.hotel.service.exception.ResourceNotFoundException;
+import com.hotel.service.mapping.HotelDTO;
+import com.hotel.service.mapping.HotelMapping;
+import com.hotel.service.repository.HotelRepository;
+import com.hotel.service.service.HotelService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class HotelServiceImpl implements HotelService{
+
+	private final Logger logger = LoggerFactory.getLogger(HotelService.class);
+	
+	private HotelRepository hotelRepository;
+	
+	@Override
+	public Hotel createHotel(HotelDTO hotelDTO) {
+		logger.info("--------- createHotel Method of HotelServiceImpl called ---------");
+		Hotel hotel = HotelMapping.toEntity(hotelDTO);
+		return hotelRepository.save(hotel);
+		
+	}
+
+	@Override
+	public List<Hotel> getAllHotels() {
+		logger.info("--------- getAllHotels Method of HotelServiceImpl called ---------");
+		return hotelRepository.findAll();
+	}
+
+	@Override
+	public Hotel getHotelById(Integer hotelId) {
+		logger.info("--------- getHotelById Method of HotelServiceImpl called ---------");
+		 hotelRepository.findById(hotelId).orElseThrow(()-> new ResourceNotFoundException(""));
+	}
+
+}

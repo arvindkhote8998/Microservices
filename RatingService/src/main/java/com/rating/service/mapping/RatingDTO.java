@@ -1,0 +1,19 @@
+package com.rating.service.mapping;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class RatingDTO {
+
+	private Integer ratingId;
+	private Integer userId;
+	private Integer hotelId;
+	private String feedBack;
+	private Integer stars;
+}

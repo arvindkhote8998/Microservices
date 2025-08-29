@@ -1,0 +1,42 @@
+package com.rating.service.service.impl;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.hotel.service.service.HotelService;
+import com.rating.service.entity.Ratings;
+import com.rating.service.mapping.RatingDTO;
+import com.rating.service.mapping.RatingMapping;
+import com.rating.service.repository.RatingRepository;
+import com.rating.service.service.RatingService;
+
+public class RatingServiceImpl implements RatingService {
+
+	private final Logger logger = LoggerFactory.getLogger(RatingService.class);
+	
+	@Autowired
+	RatingRepository ratingRepository;
+	
+	@Override
+	public Ratings create(RatingDTO ratingDTO) {
+		logger.info("-------- create method call of RatingService--------");
+		Ratings ratings = RatingMapping.toEntity(ratingDTO);
+		return ratingRepository.save(ratings);
+	}
+
+	@Override
+	public List<Ratings> getAllratings() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ratings findRatings(Integer ratingsId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,9 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: API-Gateway
+  cloud:
+    gateway:
+      routes:
+        id: ''

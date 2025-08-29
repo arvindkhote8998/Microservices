@@ -1,0 +1,37 @@
+package com.rating.service.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.rating.service.entity.Ratings;
+import com.rating.service.mapping.RatingDTO;
+import com.rating.service.service.RatingService;
+
+public class RatingController {
+
+	@Autowired
+	RatingService ratingService;
+	
+	@PostMapping("/create")
+	public ResponseEntity<Ratings>  create(RatingDTO ratingDTO){
+		 Ratings ratings = ratingService.create(ratingDTO);
+		 return new ResponseEntity<Ratings>(ratings, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getAllratings")
+	public ResponseEntity<List<Ratings>> getAllratings(){
+		List<Ratings> list = ratingService.getAllratings();
+		 return new ResponseEntity<List<Ratings>>(list, HttpStatus.OK);
+	}
+	
+	public Ratings findRatings(Integer ratingsId);
+	
+	public List<Ratings> findByUserId(Integer userId);
+	
+	public List<Ratings> findByHotelId(Integer hotelId);
+}

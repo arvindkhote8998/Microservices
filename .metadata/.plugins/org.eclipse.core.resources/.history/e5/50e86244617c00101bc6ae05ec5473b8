@@ -1,0 +1,4 @@
+spring.application.name=API-Gateway
+
+server.port=9999
+spring.cloud.gateway.routes.id

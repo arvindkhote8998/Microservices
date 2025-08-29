@@ -1,0 +1,10 @@
+package com.rating.service.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.rating.service.entity.Ratings;
+
+public interface RatingRepository extends JpaRepository<Ratings, Integer>{
+
+	
+}
